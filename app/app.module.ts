@@ -1,7 +1,9 @@
 import { NgModule } from '@angular/core'
 import { BrowserModule } from '@angular/platform-browser'
 import {RouterModule, ActivatedRouteSnapshot} from '@angular/router'
-import {AuthService} from './user/auth.service'
+import {FormsModule, ReactiveFormsModule} from '@angular/forms'
+
+
 
 import{
 	EventsListComponent,
@@ -21,6 +23,7 @@ import { NavBarComponent } from  './nav/navbar.components'
 import {ToastrService}  from './commons/toastr.service'
 import {appRoutes}  from './routes'
 import {Error404Component} from './errors/404.component'
+import {AuthService} from './user/auth.service'
 
 
 
@@ -31,7 +34,9 @@ import {Error404Component} from './errors/404.component'
 
 @NgModule({
 	imports: [BrowserModule, 
-	RouterModule.forRoot(appRoutes)
+	RouterModule.forRoot(appRoutes),
+	FormsModule,
+	ReactiveFormsModule,
 	
 	],
 	declarations: [
