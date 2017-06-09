@@ -5,6 +5,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms'
 
 
 
+
 import{
 	EventsListComponent,
 	EventThumbnailComponent,
@@ -19,21 +20,23 @@ import{
 }from './events/index'
 
 
- 
-
 import { EventsAppComponent } from  './events-app.component'
 import { NavBarComponent } from  './nav/navbar.components'
-import {ToastrService}  from './commons/toastr.service'
-import  {CollapsibleWellComponent}  from './commons/collapsible-well.component'
 import {appRoutes}  from './routes'
+import {JQ_TOKEN,Toastr,
+	TOASTR_TOKEN,
+	 CollapsibleWellComponent,
+	 SimpleModalComponent,
+	 ModalTriggerDirective
+} from './commons/index'
+
 import {Error404Component} from './errors/404.component'
 import {AuthService} from './user/auth.service'
 
 
 
-
-
-
+declare let toastr: Toastr
+declare let jQuery: Object
 
 
 @NgModule({
@@ -54,13 +57,15 @@ import {AuthService} from './user/auth.service'
 		CreateSessionComponent,
 		SessionListComponent,
 		CollapsibleWellComponent,
+		SimpleModalComponent,
+		ModalTriggerDirective,
 		DurationPipe
-	
 		],
 		providers:[
 			AuthService,
 			EventService, 
-			ToastrService, 
+			{ provide: TOASTR_TOKEN, useValue: toastr }, 
+			{ provide: JQ_TOKEN, useValue: jQuery }, 
 			EventRouteActivator,
 			EventListResolver,
 			{provide: 'canDeactivateCreateEvent', 
