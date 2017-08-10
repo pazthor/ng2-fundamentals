@@ -8,7 +8,6 @@ import {Component,Input} from '@angular/core'
         </h4>
             <ng-content select="[well-body]" *ngIf="visible"> </ng-content>
     </div>
-    
     `
 })
 
